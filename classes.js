@@ -85,17 +85,33 @@ hum1.happyBirthday()
 // создать класс - конструктор
 class Product {
   // большинство переменных только на чтение и пользователь не может их
+  // получаем значения и мы их не изменяем
+  // мы создаем приватную переменную чтобы защититить от изменений
+  // не меняем переменную напрямую
+  // геттер сететр позволяют этим управлять
+  #id
   constructor(title, price, amount) {
+    this.#id = 1
     this._title = title // переменная становится приватной
     this._price = price
     this.amount = amount //  количество
   }
-  // читает переменную / только на чтение // получаем значение и все
+  // getter setter для id
+  get id() {
+    return this.#id
+  }
+
+  get sum() {
+    return this._price * this.amount
+  }
+  // set id(newId) {
+  //   this.#id = newId
+  // }
+
   get title() {
     return this._title
   }
-  // изменяет текущую переменную
-  // синтаксис как у обычного объекта
+
   set title(newName) {
     this._title = newName
   }
@@ -103,31 +119,27 @@ class Product {
   get price() {
     return this._price
   }
-  // переписать функцию на сеттер
+  // используем функцию с рядом проверок
   set price(newPrice) {
     if (newPrice < 0 && typeof newPrice !== 'number') throw new Error('Введите число больше нуля')
     this._price = newPrice
   }
 
   sale() {
-    console.log('befre: ', this.amount)
     if (this.amount <= 0) throw new Error('Товар закончился')
     this.amount -= 1 // this.amount = this.amount - 1
-
-    console.log('after: ', this.amount)
   }
 }
 
-const xiaomi = new Product('phone', 100, 1)
-console.log(xiaomi.title) // только на чтение
-xiaomi.title = 'notebook' // сеттер - синтаксис обычного объекта экземпляр.сеттер = значение
-xiaomi.price = 300
-console.log(xiaomi)
+const xiaomi = new Product('phone', 100, 2)
+xiaomi.id = 100 // синтаксис
+console.log(xiaomi.sum) // синтаксис доступа к свойству свойства
 
-xiaomi.change_price(200)
-NaN // not a number
-console.log(isNaN([1])) // false
-
+const prod = {
+  sum: 200,
+}
+prod.sum
+console.log(xiaomi.id)
 // getter setter в классах
 // приватные методы и свойства
 
