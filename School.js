@@ -47,8 +47,11 @@ console.log(firstSchool.city)
 firstSchool.giveInformation()
 
 // занесем в прототип переменную public = true
+School.prototype.public = true
 // занести в прототип функцию, кот увеличивает кол-во учеников на 1 addNewStudent
-
+School.prototype.addNewStudent = function () {
+  this._numberOfStudents += 1 // this._numberOfStudents++
+}
 // Наследование
 // extend - расширить
 class PrimarySchool extends School {
@@ -57,6 +60,7 @@ class PrimarySchool extends School {
     this._pickUpPolicy = props.pickUpPolicy
   }
 }
+
 const firstPrim = new PrimarySchool({
   name: 'first',
   numberOfStudents: 240,
