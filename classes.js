@@ -146,3 +146,32 @@ console.log(xiaomi.id)
 // только на чтение и мы не можем их изменять
 // # - позволяет определить приватные методы и свойства
 // private - кот определяет приватные методы и свойства в typescript
+
+class Object {
+  constructor() {
+    //
+  }
+  // методы
+}
+
+class String extends Object {
+  constructor() {
+    super()
+  }
+  trim() {}
+}
+
+class Array extends Object {
+  constructor() {
+    super()
+  }
+  map() {}
+}
+// TypeError
+const arr11 = new Array([1, 2, 3])
+arr.map()
+arr.at()
+arr.map()
+const obj = { a: 1 }
+
+obj.trim()
